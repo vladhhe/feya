@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FEYA Beauty Space</title>
+<meta name="description" content="Салон краси FEYA у Вінниці, вул. Стельмаха 43А. Манікюр, педикюр, стрижки, фарбування, догляд за волоссям, брови та вії. Актуальні ціни й запис.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;900&family=Fira+Sans:ital,wght@0,400;0,500;1,400&family=Fira+Sans+Extra+Condensed:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f3ebdd;
+  --paper:#faf5ec;
+  --ink:#1b1f2e;
+  --muted:#5b5a63;
+  --terra:#a8472a;
+  --terra-soft:#e7c3b0;
+  --blue:#1d2b4f;
+  --blue-deep:#121a33;
+  --line:#d9ccb6;
+  --bg:var(--paper);
+  --fg:var(--ink);
+  --surface:var(--cream);
+  --accent:var(--terra);
+  --serif:"Bitter", Georgia, serif;
+  --sans:"Fira Sans", "Segoe UI", sans-serif;
+  --cond:"Fira Sans Extra Condensed", "Arial Narrow", sans-serif;
+  --gutter:clamp(16px, 4vw, 56px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10162a; --fg:#efe6d6; --surface:#172040; --muted:#b4ad9f;
+    --line:#2d3a63; --accent:#e08a66; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10162a; --fg:#efe6d6; --surface:#172040; --muted:#b4ad9f;
+  --line:#2d3a63; --accent:#e08a66; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 var(--sans);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--fg);color:var(--bg);padding:8px 14px;z-index:20}
+.skip:focus{left:8px}
+
+/* ---------- 12-col editorial grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(12px,2vw,28px);padding-inline:var(--gutter)}
+
+/* ---------- top billing bar ---------- */
+.bar{position:sticky;top:0;z-index:10;background:var(--blue-deep);color:var(--cream);
+  font:600 .82rem/1 var(--cond);letter-spacing:.14em;text-transform:uppercase}
+.bar .grid{align-items:center;min-height:52px}
+.bar .brand{grid-column:1/4;text-decoration:none;font-family:var(--serif);font-weight:900;letter-spacing:.08em;font-size:1.05rem}
+.bar nav{grid-column:4/10;display:flex;gap:clamp(12px,2.4vw,32px)}
+.bar nav a{text-decoration:none;opacity:.85}
+.bar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.bar .call{grid-column:10/13;justify-self:end;text-decoration:none;background:var(--terra);color:#fff;padding:10px 16px}
+.bar .call:hover{background:#8e3a21}
+
+/* ---------- poster hero ---------- */
+.poster{position:relative;background:var(--blue);color:var(--cream);overflow:hidden;isolation:isolate}
+.poster .grid{min-height:min(92vh,880px);align-content:end;padding-block:clamp(24px,5vw,56px)}
+.duo{position:absolute;inset:0 0 0 auto;width:min(46%,620px);background:#e9d7c4;z-index:-1}
+.duo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.15) brightness(1.05);mix-blend-mode:multiply}
+.duo::after{content:"";position:absolute;inset:0;background:var(--blue);mix-blend-mode:lighten}
+.duo::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--blue) 0%,transparent 35%)}
+.presents{grid-column:1/8;font:600 .9rem/1.3 var(--cond);letter-spacing:.32em;text-transform:uppercase;color:var(--terra-soft);margin:0 0 1rem}
+.title{grid-column:1/-1;margin:0;font:900 clamp(6rem,24vw,22rem)/.78 var(--serif);letter-spacing:-.04em;color:var(--cream);
+  text-shadow:0 0 1px rgba(0,0,0,.2)}
+.tagline{grid-column:1/7;margin:1.6rem 0 0;font:400 clamp(1.3rem,2.6vw,2.1rem)/1.25 var(--serif);font-style:italic}
+.tagline em{font-style:normal;color:var(--terra-soft)}
+.billing{grid-column:1/-1;margin-top:clamp(2rem,5vw,3.5rem);border-top:1px solid rgba(243,235,221,.35);padding-top:1rem;
+  font:400 clamp(.78rem,1.1vw,.95rem)/1.35 var(--cond);letter-spacing:.18em;text-transform:uppercase;color:rgba(243,235,221,.82);
+  display:flex;flex-wrap:wrap;gap:.3rem 1.4rem}
+.billing b{font-weight:600;color:var(--cream)}
+.hero-cta{grid-column:7/13;justify-self:end;align-self:end;display:flex;gap:12px;flex-wrap:wrap;margin-top:1.6rem}
+.btn{display:inline-block;text-decoration:none;font:600 .95rem/1 var(--cond);letter-spacing:.16em;text-transform:uppercase;padding:16px 22px;border:1.5px solid currentColor}
+.btn.solid{background:var(--terra);border-color:var(--terra);color:#fff}
+.btn.solid:hover{background:#8e3a21;border-color:#8e3a21}
+.btn.ghost:hover{background:rgba(243,235,221,.12)}
+
+/* ---------- intro with oversized footnotes ---------- */
+.intro{padding-block:clamp(56px,9vw,120px)}
+.intro .lede{grid-column:2/8;margin:0;font:400 clamp(1.35rem,2.4vw,1.9rem)/1.45 var(--serif)}
+.intro .lede sup,.prices sup{font:700 .6em/1 var(--sans);color:var(--accent);margin-left:.1em}
+.intro .fns{grid-column:9/13;display:grid;gap:1.6rem;align-content:start}
+.fn{margin:0;font:400 clamp(1.15rem,1.7vw,1.45rem)/1.35 var(--serif);color:var(--fg);border-top:2px solid var(--accent);padding-top:.6rem}
+.fn .k{font:700 .85rem/1 var(--sans);color:var(--accent);display:block;margin-bottom:.35rem;letter-spacing:.06em}
+
+/* ---------- programme / prices ---------- */
+.programme{background:var(--surface);padding-block:clamp(56px,8vw,110px)}
+.prog-head{align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+.prog-head h2{grid-column:1/8;margin:0;font:900 clamp(2.6rem,7vw,5.6rem)/.9 var(--serif);letter-spacing:-.02em}
+.prog-head p{grid-column:8/13;margin:0;color:var(--muted);font-size:.95rem}
+.jump{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:1.4rem;padding:0;list-style:none;
+  font:600 .9rem/1 var(--cond);letter-spacing:.12em;text-transform:uppercase}
+.jump a{text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:3px}
+.jump a span{color:var(--accent);margin-right:.4em}
+
+.scene{border-top:1px solid var(--line);padding-block:clamp(28px,4vw,48px);scroll-margin-top:64px}
+.scene-head{grid-column:1/4}
+.scene-no{display:block;font:600 .85rem/1 var(--cond);letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.scene-head h3{margin:0;font:700 clamp(1.7rem,2.8vw,2.4rem)/1.05 var(--serif)}
+.lists{grid-column:4/10}
+.prices{list-style:none;margin:0;padding:0}
+.prices li{display:flex;align-items:baseline;gap:.6rem;padding:.55rem 0;border-bottom:1px dotted var(--line)}
+.prices .n{flex:1 1 auto}
+.prices .n small{display:block;color:var(--muted);font-size:.85rem}
+.prices .p{font:700 1.05rem/1 var(--serif);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sub{margin:1.6rem 0 .3rem;font:600 .85rem/1 var(--cond);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.notes{grid-column:10/13;display:grid;gap:1.4rem;align-content:start}
+.notes figure{margin:0}
+.notes img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.notes figcaption{font:400 .82rem/1.3 var(--cond);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+
+/* ---------- frames / gallery ---------- */
+.frames{padding-block:clamp(56px,8vw,110px);background:var(--blue-deep);color:var(--cream)}
+.frames h2{grid-column:1/-1;margin:0 0 1.6rem;font:900 clamp(2.4rem,6vw,4.6rem)/.95 var(--serif)}
+.strip{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(22px,2.6vw,34px) clamp(8px,1.4vw,18px);align-items:start}
+.strip figure{margin:0;position:relative}
+.strip img{width:100%;height:100%;object-fit:cover}
+.strip figcaption{font:400 .8rem/1.3 var(--cond);letter-spacing:.16em;text-transform:uppercase;color:rgba(243,235,221,.78);margin-top:.5rem}
+.f1{grid-column:1/6;grid-row:span 2}
+.f1 img{aspect-ratio:3/4}
+.f2{grid-column:6/13}
+.f2 img{aspect-ratio:16/9}
+.f3{grid-column:6/9}
+.f4{grid-column:9/13}
+.f3 img,.f4 img{aspect-ratio:4/5}
+.f5{grid-column:1/5}
+.f6{grid-column:5/9}
+.f7{grid-column:9/13}
+.f5 img,.f6 img,.f7 img{aspect-ratio:4/5}
+.frames .pull{grid-column:2/12;margin:clamp(40px,6vw,72px) 0 0;font:400 clamp(1.4rem,3vw,2.4rem)/1.3 var(--serif);font-style:italic;color:var(--terra-soft)}
+
+/* ---------- end credits / contacts ---------- */
+.credits{padding-block:clamp(64px,9vw,128px)}
+.credits h2{grid-column:1/-1;margin:0 0 2.2rem;font:900 clamp(2.6rem,7vw,5.6rem)/.9 var(--serif)}
+.credit{grid-column:span 3;border-top:2px solid var(--fg);padding-top:.8rem}
+.credit dt{font:600 .85rem/1 var(--cond);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem}
+.credit dd{margin:0;font:400 1.15rem/1.45 var(--serif)}
+.credit dd a{text-decoration-thickness:1px;text-underline-offset:4px}
+.credits .actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;margin-top:2.6rem}
+.credits .btn.ghost{color:var(--fg)}
+.credits .btn.ghost:hover{background:var(--surface)}
+
+footer{border-top:1px solid var(--line);padding-block:22px;color:var(--muted);font:400 .82rem/1.4 var(--cond);letter-spacing:.14em;text-transform:uppercase}
+footer .grid > *{grid-column:1/-1}
+
+/* ---------- reveal ---------- */
+@media (prefers-reduced-motion: no-preference){
+  .title{animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
+  .tagline,.presents{animation:fade 1.4s .35s both}
+  @keyframes rise{from{opacity:0;transform:translateY(.12em)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+
+/* ---------- responsive ---------- */
+@media (max-width: 960px){
+  .scene-head{grid-column:1/-1;margin-bottom:1rem}
+  .lists{grid-column:1/9}
+  .notes{grid-column:9/13}
+  .intro .lede{grid-column:1/-1}
+  .intro .fns{grid-column:1/-1;grid-template-columns:repeat(3,1fr);margin-top:2.4rem}
+  .credit{grid-column:span 6;margin-bottom:1.6rem}
+}
+@media (max-width: 680px){
+  .bar nav{display:none}
+  .bar .brand{grid-column:1/7}
+  .bar .call{grid-column:7/13}
+  .poster .grid{min-height:88vh}
+  .duo{width:100%}
+  .duo::before{background:linear-gradient(0deg,var(--blue) 18%,rgba(29,43,79,.35) 60%,transparent 100%)}
+  .presents,.tagline,.hero-cta{grid-column:1/-1}
+  .hero-cta{justify-self:start}
+  .prog-head h2,.prog-head p{grid-column:1/-1}
+  .prog-head p{margin-top:.8rem}
+  .lists,.notes{grid-column:1/-1}
+  .notes{margin-top:1.6rem;grid-template-columns:1fr 1fr}
+  .notes .fn{grid-column:1/-1}
+  .intro .fns{grid-template-columns:1fr}
+  .f1,.f2,.f3,.f4,.f5,.f6,.f7{grid-column:span 6;grid-row:auto}
+  .f1 img,.f2 img{aspect-ratio:4/5}
+  .f2{grid-column:1/-1}
+  .f2 img{aspect-ratio:16/10}
+  .f7{grid-column:1/-1}
+  .f7 img{aspect-ratio:16/10}
+  .frames .pull{grid-column:1/-1}
+  .credit{grid-column:1/-1}
+  .btn{padding:14px 18px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#prices">До цін</a>
+
+<header class="bar">
+  <div class="grid">
+    <a class="brand" href="#top">FEYA</a>
+    <nav aria-label="Розділи">
+      <a href="#prices">Ціни</a>
+      <a href="#frames">Кадри</a>
+      <a href="#contacts">Контакти</a>
+    </nav>
+    <a class="call" href="tel:+380631970425">Записатися</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="poster" aria-labelledby="t">
+    <div class="duo" aria-hidden="true"><img src="img/hero.jpg" alt=""></div>
+    <div class="grid">
+      <p class="presents">Вінниця · з 2002 року · представляє</p>
+      <h1 class="title" id="t">FEYA</h1>
+      <p class="tagline">Beauty Space, де в головній ролі — <em>ви.</em></p>
+      <div class="hero-cta">
+        <a class="btn solid" href="tel:+380631970425">063 197 04 25</a>
+        <a class="btn ghost" href="#prices">Дивитись ціни</a>
+      </div>
+      <p class="billing">
+        <span><b>Манікюр</b></span><span><b>Педикюр</b></span><span><b>Стрижки та зачіски</b></span>
+        <span><b>Фарбування</b></span><span><b>Догляд за волоссям</b></span><span><b>Брови та вії</b></span>
+        <span><b>Чоловічий зал</b></span><span>вул. Стельмаха, 43А</span><span>щодня з 8:00</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="intro" aria-label="Про салон">
+    <div class="grid">
+      <p class="lede">
+        Салон краси на Вишеньці, куди приходять цілими сім’ями. За один візит можна встигнути все:
+        поки майстер робить манікюр, інший оформлює брови, а третій фарбує волосся<sup>1</sup>.
+        Двадцять чотири роки у Вінниці<sup>2</sup> — і понад шість тисяч постійних клієнтів<sup>3</sup>.
+      </p>
+      <div class="fns">
+        <p class="fn"><span class="k">1</span>Манікюр + брови + фарбування — одночасно. Ваш час цінний.</p>
+        <p class="fn"><span class="k">2</span>Працюємо з 2002 року.</p>
+        <p class="fn"><span class="k">3</span>6000+ клієнтів довіряють FEYA.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="programme" id="prices" aria-labelledby="prices-h">
+    <div class="grid prog-head">
+      <h2 id="prices-h">Програма та ціни</h2>
+      <p>Усі ціни в гривнях, за прайсом салону. Кілька цін через «/» — різні категорії послуги; точну вартість назве адміністратор під час запису.</p>
+      <ul class="jump">
+        <li><a href="#s1"><span>01</span>Манікюр</a></li>
+        <li><a href="#s2"><span>02</span>Педикюр</a></li>
+        <li><a href="#s3"><span>03</span>Стрижки</a></li>
+        <li><a href="#s4"><span>04</span>Фарбування</a></li>
+        <li><a href="#s5"><span>05</span>Догляд</a></li>
+        <li><a href="#s6"><span>06</span>Брови та вії</a></li>
+        <li><a href="#s7"><span>07</span>Чоловікам</a></li>
+      </ul>
+    </div>
+
+    <article class="scene grid" id="s1">
+      <header class="scene-head"><span class="scene-no">Сцена 01</span><h3>Манікюр</h3></header>
+      <div class="lists">
+        <ul class="prices">
+          <li><span class="n">Манікюр</span><span class="p">600</span></li>
+          <li><span class="n">Сет: манікюр + покриття + зняття</span><span class="p">950 / 1000</span></li>
+          <li><span class="n">Комплекс з укріпленням і зняттям</span><span class="p">1000 / 1080</span></li>
+          <li><span class="n">Моделювання + покриття гель-лак</span><span class="p">1100 / 1300</span></li>
+          <li><span class="n">Корекція нігтів</span><span class="p">1000 / 1100</span></li>
+          <li><span class="n">Японський + манікюр</span><span class="p">700</span></li>
+          <li><span class="n">Дизайн нігтів<sup>4</sup></span><span class="p">від 40</span></li>
+          <li><span class="n">Омбре / лунки / френч / стрази</span><span class="p">200</span></li>
+          <li><span class="n">Зняття гель-лаку</span><span class="p">150</span></li>
+          <li><span class="n">SPA-догляд для рук</span><span class="p">350</span></li>
+        </ul>
+      </div>
+      <aside class="notes">
+        <p class="fn"><span class="k">4</span>Ціна дизайну залежить від складності — покажіть фото майстру.</p>
+        <figure><img src="img/nails-french.jpg" alt="Квадратний френч з молочною основою" loading="lazy" style="aspect-ratio:1;object-position:50% 100%"><figcaption>Кадр: класичний френч</figcaption></figure>
+      </aside>
+    </article>
+
+    <article class="scene grid" id="s2">
+      <header class="scene-head"><span class="scene-no">Сцена 02</span><h3>Педикюр</h3></header>
+      <div class="lists">
+        <ul class="prices">
+          <li><span class="n">Педикюр</span><span class="p">800 / 900</span></li>
+          <li><span class="n">Комплекс: педикюр + зняття + покриття</span><span class="p">1050 / 1100</span></li>
+          <li><span class="n">Частковий педикюр<small>пальчики + покриття + зняття</small></span><span class="p">850</span></li>
+          <li><span class="n">Покриття френч</span><span class="p">200</span></li>
+          <li><span class="n">Зняття гель-лаку</span><span class="p">150</span></li>
+        </ul>
+        <p class="sub">Сети</p>
+        <ul class="prices">
+          <li><span class="n">Парафінотерапія</span><span class="p">300</span></li>
+          <li><span class="n">Відновлення IBX</span><span class="p">300</span></li>
+          <li><span class="n">SPA-догляд Bayer</span><span class="p">300</span></li>
+        </ul>
+      </div>
+      <aside class="notes">
+        <figure><img src="img/nails-pink.jpg" alt="Яскраво-рожеве покриття на квадратних нігтях" loading="lazy"><figcaption>Кадр: неоновий рожевий</figcaption></figure>
+      </aside>
+    </article>
+
+    <article class="scene grid" id="s3">
+      <header class="scene-head"><span class="scene-no">Сцена 03</span><h3>Стрижки та зачіски</h3></header>
+      <div class="lists">
+        <ul class="prices">
+          <li><span class="n">Жіноча стрижка</span><span class="p">800 / 900</span></li>
+          <li><span class="n">Стрижка кінців</span><span class="p">650</span></li>
+          <li><span class="n">Стрижка чубчика</span><span class="p">450 / 550</span></li>
+          <li><span class="n">Сет: чубчик + кінці</span><span class="p">750</span></li>
+          <li><span class="n">Полірування волосся<sup>5</sup></span><span class="p">850 / 950</span></li>
+          <li><span class="n">Укладка (рівний браш)</span><span class="p">800 / 900 / 1000</span></li>
+          <li><span class="n">Укладка (браш, локони)</span><span class="p">900 / 1100 / 1200</span></li>
+          <li><span class="n">Зачіска</span><span class="p">1300 / 1400 / 1500</span></li>
+          <li><span class="n">Плетіння</span><span class="p">400 / 600</span></li>
+          <li><span class="n">Весільна зачіска</span><span class="p">1600 / 1900</span></li>
+        </ul>
+      </div>
+      <aside class="notes">
+        <p class="fn"><span class="k">5</span>Полірування прибирає посічені й ламкі кінчики по всій довжині — без втрати довжини.</p>
+      </aside>
+    </article>
+
+    <article class="scene grid" id="s4">
+      <header class="scene-head"><span class="scene-no">Сцена 04</span><h3>Фарбування</h3></header>
+      <div class="lists">
+        <ul class="prices">
+          <li><span class="n">Фарбування коренів волосся</span><span class="p">1500–3200</span></li>
+          <li><span class="n">Фарбування в один колір</span><span class="p">1500–3500</span></li>
+          <li><span class="n">Складні техніки<sup>6</sup><small>air-touch, балаяж та інші</small></span><span class="p">3600–10000</span></li>
+          <li><span class="n">Біохімія</span><span class="p">1800–3700</span></li>
+          <li><span class="n">Вихід з чорного</span><span class="p">від 6500</span></li>
+          <li><span class="n">Контуринг</span><span class="p">3000–5500</span></li>
+        </ul>
+      </div>
+      <aside class="notes">
+        <p class="fn"><span class="k">6</span>Не знаєте, яка техніка ваша? Напишіть у директ — консультація безкоштовна.</p>
+        <figure><img src="img/blonde-waves.jpg" alt="Довге хвилясте волосся з м’яким блондом після фарбування" loading="lazy" style="object-position:50% 0"><figcaption>Кадр: м’який блонд</figcaption></figure>
+      </aside>
+    </article>
+
+    <article class="scene grid" id="s5">
+      <header class="scene-head"><span class="scene-no">Сцена 05</span><h3>Догляд за волоссям</h3></header>
+      <div class="lists">
+        <ul class="prices">
+          <li><span class="n">Веганська насолода Davroe</span><span class="p">3000</span></li>
+          <li><span class="n">Filler therapy Nashi Argan</span><span class="p">1600 / 1700</span></li>
+          <li><span class="n">Filler service Nashi Argan</span><span class="p">1400 / 1600</span></li>
+          <li><span class="n">Olaplex</span><span class="p">990 / 1300</span></li>
+          <li><span class="n">Золото для волосся</span><span class="p">1000</span></li>
+          <li><span class="n">Глибоке зволоження</span><span class="p">1000</span></li>
+          <li><span class="n">Кератиновий догляд</span><span class="p">1000</span></li>
+          <li><span class="n">Мінералізація</span><span class="p">1000</span></li>
+          <li><span class="n">Гомаж<small>очищення шкіри голови + масаж</small></span><span class="p">800</span></li>
+        </ul>
+      </div>
+      <aside class="notes">
+        <p class="fn"><span class="k">7</span>Перед фарбуванням дайте волоссю підготуватися: догляд робить колір рівнішим і стійкішим.</p>
+      </aside>
+    </article>
+
+    <article class="scene grid" id="s6">
+      <header class="scene-head"><span class="scene-no">Сцена 06</span><h3>Брови та вії</h3></header>
+      <div class="lists">
+        <ul class="prices">
+          <li><span class="n">Фарбування вій / брів</span><span class="p">400</span></li>
+          <li><span class="n">Комплекс «Гарні брови»<small>фарбування та архітектура</small></span><span class="p">550</span></li>
+          <li><span class="n">Оформлення брів</span><span class="p">350</span></li>
+          <li><span class="n">Ламінування вій</span><span class="p">800</span></li>
+          <li><span class="n">Комплекс: ламінування брів + архітектура + фарбування<sup>8</sup></span><span class="p">800</span></li>
+          <li><span class="n">Видалення воском</span><span class="p">250</span></li>
+        </ul>
+        <p class="sub">Сети</p>
+        <ul class="prices">
+          <li><span class="n">Ламі брів + ламі вій</span><span class="p">1500</span></li>
+          <li><span class="n">Ламі вій + «Гарні брови»</span><span class="p">1250</span></li>
+          <li><span class="n">Макіяж</span><span class="p">1000–1700</span></li>
+        </ul>
+      </div>
+      <aside class="notes">
+        <p class="fn"><span class="k">8</span>До комплексу ламінування брів — ботокс у подарунок.</p>
+      </aside>
+    </article>
+
+    <article class="scene grid" id="s7">
+      <header class="scene-head"><span class="scene-no">Сцена 07</span><h3>Чоловікам</h3></header>
+      <div class="lists">
+        <ul class="prices">
+          <li><span class="n">Чоловіча стрижка з насадками</span><span class="p">450</span></li>
+          <li><span class="n">Чоловіча модельна стрижка</span><span class="p">600</span></li>
+          <li><span class="n">Подовжена стрижка</span><span class="p">650</span></li>
+          <li><span class="n">Камуфляж сивини</span><span class="p">500 / 600</span></li>
+          <li><span class="n">Гоммаж<small>очищення шкіри голови + масаж голови</small></span><span class="p">600</span></li>
+          <li><span class="n">Дитяча стрижка (до 12 років)</span><span class="p">450</span></li>
+          <li><span class="n">Оформлення брів</span><span class="p">350</span></li>
+          <li><span class="n">Чоловічий манікюр</span><span class="p">600</span></li>
+          <li><span class="n">Чоловічий педикюр</span><span class="p">850</span></li>
+          <li><span class="n">SPA-догляд для рук</span><span class="p">300</span></li>
+          <li><span class="n">Чоловіча біозавивка</span><span class="p">1900</span></li>
+        </ul>
+      </div>
+      <aside class="notes">
+        <p class="fn"><span class="k">9</span>Дитяча стрижка до 12 років — приводьте малих разом із собою.</p>
+      </aside>
+    </article>
+  </section>
+
+  <section class="frames" id="frames" aria-labelledby="frames-h">
+    <div class="grid">
+      <h2 id="frames-h">Кадри з салону</h2>
+      <div class="strip">
+        <figure class="f1"><img src="img/hero.jpg" alt="Жінка в окулярах з брендованим пакетом FEYA" loading="lazy"><figcaption>Кадр 01 · FEYA на вулицях міста</figcaption></figure>
+        <figure class="f2"><img src="img/blonde-side.jpg" alt="Профіль клієнтки з хвилястим бежевим блондом на тлі логотипу FEYA" loading="lazy" style="object-position:50% 35%"><figcaption>Кадр 02 · бежевий блонд</figcaption></figure>
+        <figure class="f3"><img src="img/nails-sky.jpg" alt="Мигдалеподібні нігті з абстрактним дизайном на тлі неба" loading="lazy" style="object-position:40% 50%"><figcaption>Кадр 03 · абстракція</figcaption></figure>
+        <figure class="f4"><img src="img/nails-pink.jpg" alt="Нанесення рожевого гель-лаку" loading="lazy"><figcaption>Кадр 04 · у процесі</figcaption></figure>
+        <figure class="f5"><img src="img/blonde-waves.jpg" alt="Локони з плавним переходом кольору" loading="lazy" style="object-position:50% 0"><figcaption>Кадр 05 · після фарбування</figcaption></figure>
+        <figure class="f6"><img src="img/nails-french.jpg" alt="Френч із золотими ланцюжками" loading="lazy" style="object-position:50% 100%"><figcaption>Кадр 06 · френч</figcaption></figure>
+        <figure class="f7"><img src="img/flying.jpg" alt="Дівчина в стрибку тягнеться за стаканчиком кави FEYA" loading="lazy" style="object-position:50% 45%"><figcaption>Кадр 07 · коли поспішаєш на запис</figcaption></figure>
+      </div>
+      <p class="pull">«Бути впевненою в собі — ваша головна задача. Наша — дати вам цю впевненість.»</p>
+    </div>
+  </section>
+
+  <section class="credits" id="contacts" aria-labelledby="contacts-h">
+    <div class="grid">
+      <h2 id="contacts-h">Фінальні титри</h2>
+      <dl class="credit"><dt>Адреса</dt><dd>Вінниця, вул. Стельмаха, 43А<br>мікрорайон Вишенька<br><a href="https://www.google.com/maps/search/?api=1&amp;query=%D0%92%D1%96%D0%BD%D0%BD%D0%B8%D1%86%D1%8F%2C+%D0%A1%D1%82%D0%B5%D0%BB%D1%8C%D0%BC%D0%B0%D1%85%D0%B0+43%D0%90" target="_blank" rel="noopener">Відкрити на мапі</a></dd></dl>
+      <dl class="credit"><dt>Години</dt><dd>Пн–Сб: 8:00–20:00<br>Нд: 8:00–18:00</dd></dl>
+      <dl class="credit"><dt>Телефони</dt><dd><a href="tel:+380631970425">063 197 04 25</a><br><a href="tel:+380960952256">096 095 22 56</a></dd></dl>
+      <dl class="credit"><dt>Instagram</dt><dd><a href="https://www.instagram.com/sk_feya/" target="_blank" rel="noopener">@sk_feya</a><br>запис і консультації в директ</dd></dl>
+      <div class="actions">
+        <a class="btn solid" href="tel:+380631970425">Подзвонити та записатися</a>
+        <a class="btn ghost" href="https://ig.me/m/sk_feya" target="_blank" rel="noopener">Написати в директ</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="grid"><span>FEYA Beauty Space · Вінниця · з 2002 року</span></div>
+</footer>
+</body>
+</html>
